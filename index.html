@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+	<title>  Idle Spiel v1.1.0</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+	<!-- Alte Gelt Und Geld Pro Sekune Anzeige 
+	
+	 GeldAnzeige 
+	<h1> <span id="Geld"> </span> Euro </h1>
+	 GeldProSekundeAnzeige  
+	<h3> <span id="GeldPS"> </span> Euro PS </h3>
+	-->
+	<!-- Neue Geld Anzeige Und Geld Pro Sekunde Anzeige -->
+		<div style="font-size: 50px; text-align:center"> <span id="Geld"> </span> Euro </div>
+		<div style="font-size: 25px; text-align:center"> <span id="GeldPS"> </span> Euro PS </div>
+	<!-- Neue Produnktionknöpfe und Preise -->
+		<p>
+			<div class='Hauptknoepfe'>
+				(
+				<span class="Knopf HKnofp" onclick="AKaufen()"> 
+					<span  id="A"  > </span>
+					<br /> 
+					Price: <span id="APreisAnz"> </span>
+				
+				
+				</span> x
+				 <span class="Knopf HKnofp" onclick="BKaufen()">
+					<span  id="B"> </span>
+					<br /> 
+					Price: <span id="BPreisAnz"> </span>
+				</span> x
+				<span class="Knopf HKnofp" onclick="CKauf()">
+					<span  id="C" > </span>
+					<br /> 
+					Price: <span id="CPreisAnz"> </span>
+				</span> )^
+				<span class="Knopf HKnofp" onclick="ExAKauf()" id="ExAKnopf">
+					<span  id="ExA" ></span>
+					<br /> 
+					Price: <span id="ExAPreisAnz"> </span>
+				</span>
+				<br />
+				</div>
+			
+		</p>
+	<!--Alte Produktionknöpfe und Preise
+	 ProdunktionKnöpfe 
+	<h2> (<button onclick="AKauf()" id="A"> </button> * <button onclick="BKauf()" id="B"> </button> * <button onclick="CKauf()" id="C"> </button>) ^ <button onclick="ExAKauf()" id="ExA"> </button> </h2>
+	 PreisAnzeigen> 
+	<ul>
+		<li>
+				APrice: <span id="APreis"> </span>
+		<li> 	BPrice: <span id="BPreis"> </span>
+		<li> 	CPrice: <span id="CPreis"> </span>
+		<li> 	ExAPrice: <span id="ExAPreis"> </span>
+	-->
+	<!--- Mehrfach Kauf und Reset --->
+	<p> <span onclick="SetMultiKaufAnzahl()" class="Knopf"> Buy Multi </span> </p>
+	<p> <span onclick='ModusAendern("KaufModusA")' class="Knopf"> Buy Max A: <span id="BuyMaxKno"> </span> </span>
+	<p> <span onclick='ModusAendern("KaufModusB")' class="Knopf"> Buy May B (Very Lagy): <span id="BMulti/MaxKno" </span> </p>
+	<p> <span onclick="Reset()" class="Knopf"> Reset </span> </p>
+	<p> <span onclick="AendernSpielstandCo()" class="Knopf">Change Save State/Code</span> </p>
+	<!--- Sonstige Infos --->
+	<p> This game uses the library <a href="https://github.com/MikeMcl/decimal.js/"> decimal.js </a> so There Can Be Number higher than 1e+308 </p>
+	<h3> Usefull Links: </h3>
+	<a href="https://www.reddit.com/r/incremental_games/comments/4ervq2/my_first_idleincremental_game_update/"> Reddit Thread</a>
+	<br/>
+	<a href="https://www.youtube.com/channel/UC3BFoEDnswfz4JGBnt_RIgA"> My Youtube Channel(German) </a>
+</body>	
+<!--- Importieren Von Scripten--->
+ 	
+	<script src=decimal.js> </script>
+	<script src=Spiel.js> </script>
+	<script src=Speichern.js> </script>
+	<script src=Starter.js> </script>
