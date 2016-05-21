@@ -41,13 +41,19 @@ APreis : Decimal(ABasPreis),
 BPreis : Decimal(BBasPreis),
 CPreis : Decimal(CBasPreis),
 ExAPreis : Decimal(ExABasPreis),
-lastUpdate: new Date().getTime()
+lastUpdate: new Date().getTime(),
+BKaufAnz : Decimal(0),
+CKaufAnz : Decimal(0),
+ExAKaufAnz : Decimal(0)
 }
 MultiPreis = Decimal(0)
 MultiKaufAnzahl = Decimal(1)
 KaufModusA = false;
 KaufModusB = false;
 Spielstand = 'LIdleS';
+BKaufAnzTxt = document.getElementById("BKaufAnzAnz")
+CKaufAnzTxt = document.getElementById("CKaufAnzAnz")
+ExAKaufAnzTxt = document.getElementById("ExAKaufAnzAnz")
 
 function BilTxtAkt ()
 	{
@@ -63,6 +69,9 @@ function BilTxtAkt ()
 	ExAPreisTxt.textContent = Sp.ExAPreis.toPrecision(3);
 	MaxKaufTxt.textContent = SchaltStatus(KaufModusA)
 	KaufModusBTxt.textContent = SchaltStatus(KaufModusB)
+	BKaufAnzTxt.textContent = Sp.BKaufAnz.toPrecision(6);
+	CKaufAnzTxt.textContent = Sp.CKaufAnz.toPrecision(6);
+	ExAKaufAnzTxt.textContent = Sp.ExAKaufAnz.toPrecision(6);
 	}
 	
 function Rechnen () {
@@ -155,6 +164,7 @@ function BKauf () {
 			Sp.APreis = ABasPreis
 			Rechnen()
 			MKaufPrRch()
+			Sp.BKaufAnz = Sp.BKaufAnz.add(1)
 		}	
 	//}
 }
@@ -187,6 +197,8 @@ function CKauf () {
 		Sp.BPreis = BBasPreis
 		Rechnen()
 		MKaufPrRch()
+		Sp.CKaufAnz = Sp.CKaufAnz.add(1)
+		Sp.BKaufAnz = Decimal(0)
 	}
 }
 
@@ -205,6 +217,9 @@ function ExAKauf () {
 		Sp.CPreis = CBasPreis
 		Rechnen()
 		MKaufPrRch()
+		Sp.ExAKaufAnz = Sp.ExAKaufAnz.add(1)
+		Sp.BKaufAnz = Decimal(0)
+		Sp.CKaufAnz = Decimal(0)
 	}
 }
 function SchaltStatus(Variable) {

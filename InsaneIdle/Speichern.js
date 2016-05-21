@@ -7,18 +7,19 @@ function Laden() {
     if (!localStorage[Spielstand]) return;
     var save_data = JSON.parse(atob(localStorage[Spielstand]));
     Sp = save_data;
-	Sp.Geld = Decimal.fromJSON(Sp.Geld)
-	Sp.A = Decimal.fromJSON(Sp.A)
-	Sp.B = Decimal.fromJSON(Sp.B)
-	Sp.C = Decimal.fromJSON(Sp.C)
-	Sp.ExA = Decimal.fromJSON(Sp.ExA)
-	Sp.APreis = Decimal.fromJSON(Sp.APreis)
-	Sp.BPreis = Decimal.fromJSON(Sp.BPreis)
-	Sp.CPreis = Decimal.fromJSON(Sp.CPreis)
-	Sp.ExAPreis = Decimal.fromJSON(Sp.ExAPreis)
+	if (typeof Sp.BKaufAnz != 'undefined')
+	DecimalWerteKonvertieren(true)
+	else {
+		DecimalWerteKonvertieren(false)
+		Sp.BKaufAnz = Decimal(0)
+		Sp.CKaufAnz = Decimal(0)
+		Sp.ExAKaufAnz = Decimal(0)
+	}
 	Rechnen()
 	BilTxtAkt()
 	MKaufPrRch()
+	
+	
 }
 
 function Reset() {
@@ -31,6 +32,9 @@ function Reset() {
 	Sp.BPreis = BBasPreis
 	Sp.CPreis = CBasPreis
 	Sp.ExAPreis = ExABasPreis
+	Sp.BKaufAnz = Decimal(0);
+	Sp.CKaufAnz = Decimal(0);
+	Sp.ExAKaufAnz = Decimal(0);
 	Rechnen();
 	BilTxtAkt();
 	MKaufPrRch();
@@ -53,5 +57,22 @@ Eing= prompt("Your Save Is saved Under This Code If you want to load a save type
 	SpeichSpielstandCo();
 	Reset();
 	Laden();
+	}
+}
+
+function DecimalWerteKonvertieren(Test) {
+	Sp.Geld = Decimal.fromJSON(Sp.Geld)
+	Sp.A = Decimal.fromJSON(Sp.A)
+	Sp.B = Decimal.fromJSON(Sp.B)
+	Sp.C = Decimal.fromJSON(Sp.C)
+	Sp.ExA = Decimal.fromJSON(Sp.ExA)
+	Sp.APreis = Decimal.fromJSON(Sp.APreis)
+	Sp.BPreis = Decimal.fromJSON(Sp.BPreis)
+	Sp.CPreis = Decimal.fromJSON(Sp.CPreis)
+	Sp.ExAPreis = Decimal.fromJSON(Sp.ExAPreis)
+	if(Test) {
+		Sp.BKaufAnz = Decimal.fromJSON(Sp.BKaufAnz)
+		Sp.CKaufAnz = Decimal.fromJSON(Sp.CKaufAnz)
+		Sp.ExAKaufAnz = Decimal.fromJSON(Sp.ExAKaufAnz)
 	}
 }
