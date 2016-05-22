@@ -87,10 +87,14 @@ function ProFrame (modi) {
 
 function MKaufPrRch() {
 	MultiPreis = Decimal(0)
-	
-	for (i = Decimal(0);(MultiKaufAnzahl.gt(i));i=i.add(1)){
-		MultiPreis = MultiPreis.add(Sp.APreis.mul(Decimal.pow(PreisErhA, i)))
-}}
+	if (MultiKaufAnzahl)
+	MultiPreis = Sp.APreis.mul(Decimal.div(Decimal.sub(Decimal.pow(PreisErhA, MultiKaufAnzahl), 1), (PreisErhA - 1)));
+	else
+	MultiPreis = Sp.APreis
+	//for (i = Decimal(0);(MultiKaufAnzahl.gt(i));i=i.add(1)){
+		//MultiPreis = MultiPreis.add(Sp.APreis.mul(Decimal.pow(PreisErhA, i)))
+//}
+}
 
 function AKauf () {
 	if (Sp.Geld.gte(MultiPreis)) {
@@ -111,11 +115,9 @@ function SetMultiKaufAnzahl(){
 }
 
 function MaxAKauf () {
-	MKaufPrRch()
-	while (Sp.Geld.gte(MultiPreis)) {
-		MKaufPrRch()
-		AKauf()
-	}
+	MaxAKaufMengeBestimmen()
+	AKauf()
+	
 }
 
 function ModusAendern (Variable) {
@@ -230,3 +232,15 @@ function SchaltStatus(Variable) {
 		return "Off"
 	}
 }
+
+function MaxAKaufMengeBestimmen() {
+		if (Sp.APreis.gt(Sp.Geld)) {
+			MultiKaufAnzahl = 1;
+        }
+        //var result = Decimal.log(Decimal.div(Decimal.div(Sp.Geld.mul(Decimal.add(1,PreisErhA - 1)) , Sp.APreis) , Decimal.log(PreisErhA)));
+		var result = Decimal.div(Decimal.log(Decimal.add(1,Decimal.div(Decimal.mul((PreisErhA - 1) , Sp.Geld) , Sp.APreis))) , Decimal.log(PreisErhA));
+        // cast the result to an int
+        MultiKaufAnzahl = Decimal.round(result.floor())
+		MKaufPrRch()
+    }
+
