@@ -293,7 +293,7 @@ statAkt();
 function FarbBes(sache, expo) {
     if (Sp.Geld.gte(sache)) {
         if (expo) {
-            if(Sp.Geld.add(GeldPS.mul(2)).gte(Sp.APreis) || Sp.Geld.add(GeldPS.mul(8)).gte(Sp.BPreis) || Sp.Geld.add(GeldPS.mul(60)).gte(Sp.CPreis) ){
+            if(Sp.Geld.gte(Sp.APreis) || Sp.Geld.add(GeldPS.mul(5)).gte(Sp.BPreis) || Sp.Geld.add(GeldPS.mul(60)).gte(Sp.CPreis) ){
                 return "red";
             }
             else
@@ -307,4 +307,13 @@ function FarbBes(sache, expo) {
         
     }
         
+}
+
+function statAkt() {
+    kongregate.stats.submit('Money', Sp.Geld.log10().toNumber());
+    kongregate.stats.submit('Money per second', GeldPS.log10().toNumber());
+    kongregate.stats.submit('A', Sp.A.log10().toNumber());
+    kongregate.stats.submit('B', Sp.B.log10().toNumber());
+    kongregate.stats.submit('C', Sp.C.log10().toNumber());
+    kongregate.stats.submit('ExA', Sp.ExA.log10().toNumber());
 }
