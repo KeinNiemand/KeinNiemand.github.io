@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Insane Idle 2 Alpha 1.0.0</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!---Import von CSS datein--->
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" type="text/css" 
+              href="Libs/jquery-ui-1.12.1/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" 
+              href="Libs/jquery-ui-1.12.1/jquery-ui.structure.css">
+        <link rel="stylesheet" type="text/css" 
+              href="Libs/jquery-ui-1.12.1/jquery-ui.theme.css">
+        
+    </head>
+    <body>
+        <nav>
+            <span class="Nav">Main</span>
+            
+            <span class="Nav">Options</span>
+        </nav>
+                <div id="Main"> </div>
+        
+        
+     <!---Importieren von scripten--->
+       <!---Google Analytics ---> 
+     <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-83650410-2', 'auto');
+        ga('send', 'pageview');
+
+        </script>
+        <!---Jquarry--->
+        <script type="text/javascript" src="Libs/jquery-3.1.0.js"> </script>
+        <script type="text/javascript" src="Libs/jquery-ui-1.12.1/jquery-ui.js">
+        </script>
+        <!--- Kongregate --->
+        <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
+        <script>
+            // Load the API
+            var kongregate;
+            kongregateAPI.loadAPI(onComplete);
+
+            // Callback function
+            function onComplete(){
+              // Set the global kongregate API object
+             kongregate = kongregateAPI.getAPI();
+             }
+        </script>
+        <!---Spiel--->
+        <script type="text/javascript" src="Libs/decimal.js"> </script>
+        <script type="text/javascript" src="Scripts/Variablen.js"> </script>
+        <script type="text/javascript" src="Scripts/UI.js"> </script> 
+        <script type="text/javascript" src="Scripts/Spiel.js"></script>
+        <script type="text/javascript" src="Scripts/Speichern.js"></script>
+        <script type="text/javascript" src="Scripts/Kong.js"> </script>
+        <script type="text/javascript" src="Scripts/Start.js"></script>
+    </body>
+</html>
