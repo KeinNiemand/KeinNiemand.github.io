@@ -6,7 +6,7 @@
 
 
 $(document).ready(function(){
-    Game.Sp.geld[1] = Decimal(25);
+    initvars()
     Laden()
     TextAktu()
     setInterval(protick, 1000/TPS);

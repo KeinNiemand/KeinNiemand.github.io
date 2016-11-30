@@ -24,13 +24,19 @@ $(document).ready(function(){
         uiv.produkanzeigen[i] = $("<div id='produktanzeige"+i+"'> your lvl"+i+" get's multiplyed by xxx Pt </div>");
         uiv.levinh[i].append(uiv.produkanzeigen[i]);
 }
-    
+    uiv.options.slideUp();
     uiv.main.accordion();
     $("nav>*:first").click(function() {
       uiv.main.slideToggle();
+      uiv.options.slideUp();
     })
     $("*").css("font-family" , "Segoe UI Semibold,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue Frutiger, Verdana");
     $("#Main").css("font-family" , "Segoe UI,Frutiger Linotype,Dejavu Sans,Helvetica Neue Frutiger, Verdana");
+    uiv.options.css("font-family" , "Segoe UI,Frutiger Linotype,Dejavu Sans,Helvetica Neue Frutiger, Verdana");
+    $("#NavOpt").click(function() {
+      uiv.main.slideUp();
+      uiv.options.slideToggle();
+    })
 })
 
 function TextAktu() {
