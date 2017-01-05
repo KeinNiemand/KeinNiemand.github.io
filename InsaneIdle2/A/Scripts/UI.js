@@ -6,12 +6,13 @@
 
 //UI Initialiesierung
 $(document).ready(function(){
+
     uiv.main = $("#Main")
     for (i = 1; i <= anzahl; i++) { 
         
-        uiv.levels[i] = $('<h1 id="level' + i + '">lvl'+i+' </h1>')
+        uiv.levels[i] = $('<h1 id="level' + i + '" class="levels">lvl'+i+' </h1>')
         uiv.main.append(uiv.levels[i])
-        uiv.levinh[i] = $('<div id="levelinh'+ 0 +'"></div>')
+        uiv.levinh[i] = $('<div id="levelinh'+ i +'" class="levelinh"></div>')
         uiv.main.append(uiv.levinh[i])
         uiv.anzeigen[i] =$('<div id="anzeige'+i+'"> 123 </div>')
         uiv.levinh[i].append(uiv.anzeigen[i])
@@ -25,7 +26,12 @@ $(document).ready(function(){
         uiv.levinh[i].append(uiv.produkanzeigen[i]);
 }
     uiv.options.slideUp();
-    uiv.main.accordion();
+    //uiv.main.accordion();
+        //Test Code
+                 $('.levels').on('click', function() {
+                 $(this).next('.levelinh').slideToggle();
+                });
+    //End Test Code
     $("nav>*:first").click(function() {
       uiv.main.slideToggle();
       uiv.options.slideUp();
