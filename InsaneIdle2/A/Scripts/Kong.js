@@ -8,6 +8,6 @@ function statakt() {
     for(kongi=1;kongi<=anzahl;kongi++) {
     kongregate.stats.submit("log10lvl"+kongi, Game.Sp.geld[kongi].log(10).toNumber());
     kongregate.stats.submit("log10lvl"+kongi+"bought", Game.Sp.anzGek[kongi].log(10).toNumber());
-    kongregate.stats.submit("log10lvl"+kongi+"pT", Game.prosek[kongi].log(10).toNumber());
+    kongregate.stats.submit("log10lvl"+kongi+"pT", Game.protick[kongi].log(10).toNumber());
     }
 }
