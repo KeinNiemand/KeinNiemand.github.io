@@ -22,7 +22,7 @@ $(document).ready(function(){
         uiv.preisanzeigen[i] = $('<span id="pAnzeige'+i+'"> Preis: </span>')
         if (i != 1)
         uiv.levinh[i].append(uiv.preisanzeigen[i])
-        uiv.produkanzeigen[i] = $("<div id='produktanzeige"+i+"'> your lvl"+i+" get's multiplyed by xxx Pt </div>");
+        uiv.produkanzeigen[i] = $("<div id='produktanzeige"+i+"'> you get xxx lvl "+i+" Pt </div>");
         uiv.levinh[i].append(uiv.produkanzeigen[i]);
 }
     uiv.options.slideUp();
@@ -49,7 +49,7 @@ function TextAktu() {
     for (i=1; i<=anzahl;i++) {
         $("#anzeige"+i).text(Game.Sp.geld[i].toPrecision(3) + 'lvl' +i);
         $("#pAnzeige"+i).text("Price:" + Game.preis[i].toPrecision(3) + ' lvl1');
-        $("#produktanzeige"+i).text("your lvl"+i+" get's multiplyed by "+Game.prosek[i].toPrecision(6)+" pT")
+        $("#produktanzeige"+i).text("you get "+Game.protick[i].mul(TPS).toPrecision(3)+" lvl "+i+" Ps")
         uiv.anzeigen[0]
     }
 }
