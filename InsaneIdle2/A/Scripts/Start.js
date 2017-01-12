@@ -9,7 +9,14 @@ $(document).ready(function(){
     initvars()
     Laden()
     TextAktu()
-    setInterval(protick, 1000/TPS);
+    setInterval(function(){
+        var thisUpdate = new Date().getTime();
+        var diff = (thisUpdate - Game.Sp.lastUpdate);
+        diff = Math.round(diff / (1000/TPS));
+        protick(diff);
+        Game.Sp.lastUpdate = thisUpdate;
+    }, 1000/TPS);
+    
     setInterval(Speichern, 10000);
     setInterval(statakt, 10000);
 });

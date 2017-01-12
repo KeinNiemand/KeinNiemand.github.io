@@ -26,7 +26,8 @@ nav>*{
     border: 2px;
     border-style: solid;
     border-radius: 8px;
-    background-color:green;
+    background-color:silver;
+    color: black;
     font-size: 14pt;
 }
 
@@ -36,7 +37,7 @@ button{
 }
 
 .levels{
-    background-color:  cyan;
+    background-color:  #65d8ff;
     border-width:  2px;
     border-color: black;
     border-style: solid;

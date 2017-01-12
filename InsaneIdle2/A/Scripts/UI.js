@@ -24,14 +24,16 @@ $(document).ready(function(){
         uiv.levinh[i].append(uiv.preisanzeigen[i])
         uiv.produkanzeigen[i] = $("<div id='produktanzeige"+i+"'> you get xxx lvl "+i+" Pt </div>");
         uiv.levinh[i].append(uiv.produkanzeigen[i]);
+        uiv.gekauftanzeige[i] = $("<div id='gekauftanzeige"+i+"'> </div>");
+        uiv.levinh[i].append(uiv.gekauftanzeige[i]);
 }
     uiv.options.slideUp();
-    //uiv.main.accordion();
-        //Test Code
+    //Hiding lvl1 bought counter
+    $("#gekauftanzeige1").hide()
+
                  $('.levels').on('click', function() {
                  $(this).next('.levelinh').slideToggle();
                 });
-    //End Test Code
     $("nav>*:first").click(function() {
       uiv.main.slideToggle();
       uiv.options.slideUp();
@@ -48,9 +50,13 @@ $(document).ready(function(){
 function TextAktu() {
     for (i=1; i<=anzahl;i++) {
         $("#anzeige"+i).text(Game.Sp.geld[i].toPrecision(3) + 'lvl' +i);
-        $("#pAnzeige"+i).text("Price:" + Game.preis[i].toPrecision(3) + ' lvl1');
-        $("#produktanzeige"+i).text("you get "+Game.protick[i].mul(TPS).toPrecision(3)+" lvl "+i+" Ps")
-        uiv.anzeigen[0]
+        $("#pAnzeige"+i).text("Price: " + Game.preis[i].toPrecision(3) + ' lvl1');
+        $("#produktanzeige"+i).text("you get "+Game.protick[i].mul(TPS).toPrecision(3)+" lvl "+i+" Ps");
+        uiv.anzeigen[0];
+        $("#gekauftanzeige"+i).text("you have bought this "+Game.Sp.anzGek[i].toPrecision(3)+" times");
+        if (Game.Sp.geld[1].gt(Game.preis[i]))
+            $("#KnopfA"+i).css("background-color", "silver");
+        else 
+            $("#KnopfA"+i).css("background-color", "grey");
     }
 }
-

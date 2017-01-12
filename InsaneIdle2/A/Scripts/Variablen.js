@@ -8,7 +8,7 @@
 var anzahl = 5;
 var TPS = 30;
 Decimal.config({ precision: 12 })
-var savever = 1;
+var savever = 2;
 
 var uiv = {
     haupt: $("#Haupt"),
@@ -19,14 +19,16 @@ var uiv = {
     KnopfA: [anzahl],
     preisanzeigen: [],
     produkanzeigen: [],
-    options: $("#Options")
+    options: $("#Options"),
+    gekauftanzeige: []
 };
 
 var Game = {
     Sp: {
         geld: [],
         anzGek: [],
-        produmul: []
+        produmul: [],
+        lastUpdate: new Date().getTime()
     },
     basPreis: [],
     preiserh: [],
@@ -54,6 +56,6 @@ function initvars() {
     Game.Sp.produmul[i] = Decimal(0.0001);
 }    
 //Startgeld
-   Game.Sp.geld[1] = Decimal(40);
-   Game.Sp.wurzel = 2;
+   Game.Sp.geld[1] = Decimal(20);
+   Game.savever = savever;
 }
