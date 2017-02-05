@@ -3,6 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var combineObj = function(obj1, obj2) {
+    for(var key in obj2){
+        obj1[key] = obj2[key]
+    }
+    return obj1
+    }
+
+
 
 function Speichern() {
    localStorage["InsaneIdle2S"] = btoa(JSON.stringify(Game.Sp));
@@ -16,11 +24,9 @@ function Laden() {
     if (Game.savever === savever) {
         if (!localStorage["InsaneIdle2S"]) return;
         var save_data =  JSON.parse(atob(localStorage["InsaneIdle2S"]));
-        Game.Sp = save_data;
+        initvars()
+        Game.Sp = combineObj(Game.Sp , save_data);
         DecimalWerteKonvertieren()
-        if (Game.Sp.produmul[1].lt(Game.BasSp.produmul[1])){
-            Game.Sp.produmul = Game.BasSp.produmul
-        }
     }
     else
         initvars()
@@ -35,13 +41,15 @@ function DecimalWerteKonvertieren() {
     for (konv=1;konv<=anzahl;konv++) {
         Game.Sp.anzGek[konv] = Decimal.fromJSON(Game.Sp.anzGek[konv]);
         Game.Sp.geld[konv] = Decimal.fromJSON(Game.Sp.geld[konv]);
-        Game.Sp.produmul[konv] = Decimal.fromJSON(Game.Sp.produmul[konv]);
+        for (konv2=0; konv2<upgradeanzahl; konv2++) {
+            Game.Sp.upgradeGek[konv][konv2] = Decimal.fromJSON(Game.Sp.upgradeGek[konv][konv2]);
+        }
     }
 }
 
 function reset() {
     var code = prompt("This will completly delete your save you will not get anything type in yes and click ok to reset", "No");
-    if (code == "yes");
+    if (code === "yes")
     initvars();
 }
 
