@@ -5,10 +5,11 @@
  */
 var combineObj = function(obj1, obj2) {
     for(var key in obj2){
-        if (typeof obj2[key] !== "object")
+        if (typeof obj2[key] !== "object" || obj1[key] === undefined)
         obj1[key] = obj2[key]
         else {
             for (var i = 0; i<obj2[key].length; i++) {
+                
                 obj1[key][i] = obj2[key][i]
             }
         }    
