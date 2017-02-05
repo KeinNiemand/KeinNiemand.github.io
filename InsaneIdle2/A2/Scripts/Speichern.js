@@ -26,6 +26,7 @@ function Laden() {
         var save_data =  JSON.parse(atob(localStorage["InsaneIdle2S"]));
         initvars()
         Game.Sp = combineObj(Game.Sp , save_data);
+        Game.Sp 
         DecimalWerteKonvertieren()
     }
     else
@@ -39,9 +40,12 @@ function Laden() {
 
 function DecimalWerteKonvertieren() {
     for (konv=1;konv<=anzahl;konv++) {
+        if (typeof Game.Sp.anzGek[konv] === "string")
         Game.Sp.anzGek[konv] = Decimal.fromJSON(Game.Sp.anzGek[konv]);
+        if (typeof Game.Sp.geld[konv] === "string")
         Game.Sp.geld[konv] = Decimal.fromJSON(Game.Sp.geld[konv]);
         for (konv2=0; konv2<upgradeanzahl; konv2++) {
+            if (typeof Game.Sp.upgradeGek[konv][konv2] === "string")
             Game.Sp.upgradeGek[konv][konv2] = Decimal.fromJSON(Game.Sp.upgradeGek[konv][konv2]);
         }
     }
