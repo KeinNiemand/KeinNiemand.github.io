@@ -6,9 +6,12 @@
 
 
 $(document).ready(function(){
-    initvars()
-    Laden()
-    TextAktu()
+    initvars();
+    generateMain();
+    generateUpgradesUI();
+    initUI();
+    Laden();
+    TextAktu();
     setInterval(function(){
         var thisUpdate = new Date().getTime();
         var diff = (thisUpdate - Game.Sp.lastUpdate);

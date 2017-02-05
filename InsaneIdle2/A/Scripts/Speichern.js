@@ -3,6 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var combineObj = function(obj1, obj2) {
+    for(var key in obj2){
+        if (typeof obj2[key] !== "object" ||  typeof obj1[key] === "undefined")
+        obj1[key] = obj2[key]
+        else {
+            for (var i = 0; i<obj2[key].length; i++) {
+                
+                obj1[key][i] = obj2[key][i]
+            }
+        }    
+    }
+        
+    return obj1
+    }
+
+
 
 function Speichern() {
    localStorage["InsaneIdle2S"] = btoa(JSON.stringify(Game.Sp));
@@ -16,11 +32,10 @@ function Laden() {
     if (Game.savever === savever) {
         if (!localStorage["InsaneIdle2S"]) return;
         var save_data =  JSON.parse(atob(localStorage["InsaneIdle2S"]));
-        Game.Sp = save_data;
+        initvars()
+        Game.Sp = combineObj(Game.Sp , save_data);
+        Game.Sp 
         DecimalWerteKonvertieren()
-        if (Game.Sp.produmul[1].lt(Game.BasSp.produmul[1])){
-            Game.Sp.produmul = Game.BasSp.produmul
-        }
     }
     else
         initvars()
@@ -33,15 +48,20 @@ function Laden() {
 
 function DecimalWerteKonvertieren() {
     for (konv=1;konv<=anzahl;konv++) {
+        if (typeof Game.Sp.anzGek[konv] === "string")
         Game.Sp.anzGek[konv] = Decimal.fromJSON(Game.Sp.anzGek[konv]);
+        if (typeof Game.Sp.geld[konv] === "string")
         Game.Sp.geld[konv] = Decimal.fromJSON(Game.Sp.geld[konv]);
-        Game.Sp.produmul[konv] = Decimal.fromJSON(Game.Sp.produmul[konv]);
+        for (konv2=0; konv2<upgradeanzahl; konv2++) {
+            if (typeof Game.Sp.upgradeGek[konv][konv2] === "string")
+            Game.Sp.upgradeGek[konv][konv2] = Decimal.fromJSON(Game.Sp.upgradeGek[konv][konv2]);
+        }
     }
 }
 
 function reset() {
     var code = prompt("This will completly delete your save you will not get anything type in yes and click ok to reset", "No");
-    if (code == "yes");
+    if (code === "yes")
     initvars();
 }
 
