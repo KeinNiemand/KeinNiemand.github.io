@@ -107,6 +107,6 @@ function TextAktu() {
             $("#upgrpreisanz"+i+"S"+i3).text("Price: "+ Game.upgradePreis[i][i3].toPrecision(3))
             $("#upgrgeksanz"+i+"S"+i3).text("  You have bought this "+ Game.Sp.upgradeGek[i][i3].toPrecision(3)+"times")
         }
-        $("#KnopfA"+i).text("Buy 1| 50%("+getBuyAmount(i)+") Maxed at "+Game.maxBuyAmount[i].toPrecision(3));
+        $("#KnopfA"+i).text("Buy 1| 50%("+getBuyAmount(i).toPrecision(3)+") Maxed at "+Game.maxBuyAmount[i].toPrecision(3));
     }
 }
