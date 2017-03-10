@@ -97,16 +97,22 @@ function TextAktu() {
         $("#produktanzeige"+i).text("you get "+Game.protick[i].mul(TPS).toPrecision(3)+" lvl "+i+" Ps");
         uiv.anzeigen[0];
         $("#gekauftanzeige"+i).text("you have bought this "+Game.Sp.anzGek[i].toPrecision(3)+" times");
-        if (Game.Sp.geld[1].gt(Game.preis[i]))
-            $("#KnopfA"+i).css("background-color", "silver");
-        else 
-            $("#KnopfA"+i).css("background-color", "grey");
+            $("#KnopfA"+i).css("background-color" ,buyButtonColor(Game.preis[i]));
         $("#produmulanz"+i).text("Produktmul: " + Game.produmul[i].toPrecision(3))
         for (var i3=0; i3<upgradeanzahl; i3++) {
-        $("#upgrkn"+i+"S"+i3).text("Upgrade "+(i3+1)+ " efficiency = " +Game.upgradeEfekt[i3].add(1).toPrecision(3))
-            $("#upgrpreisanz"+i+"S"+i3).text("Price: "+ Game.upgradePreis[i][i3].toPrecision(3))
-            $("#upgrgeksanz"+i+"S"+i3).text("  You have bought this "+ Game.Sp.upgradeGek[i][i3].toPrecision(3)+"times")
+            $("#upgrkn"+i+"S"+i3).text("Upgrade "+(i3+1)+ " efficiency = " +Game.upgradeEfekt[i3].add(1).toPrecision(3));
+            $("#upgrpreisanz"+i+"S"+i3).text("Price: "+ Game.upgradePreis[i][i3].toPrecision(3));
+            $("#upgrgeksanz"+i+"S"+i3).text("  You have bought this "+ Game.Sp.upgradeGek[i][i3].toPrecision(3)+"times");
+            $("#upgrkn"+i+"S"+i3).css("background-color" , buyButtonColor(Game.upgradePreis[i][i3]));
         }
         $("#KnopfA"+i).text("Buy 1| 50%("+getBuyAmount(i).toPrecision(3)+") Maxed at "+Game.maxBuyAmount[i].toPrecision(3));
     }
+}
+
+var buyButtonColor = function(price) {
+    if (Game.Sp.geld[1].gt(price)) 
+        return "silver";
+    else
+        return "grey";
+    
 }

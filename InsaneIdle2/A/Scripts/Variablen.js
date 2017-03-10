@@ -59,13 +59,16 @@ var Game = {
 
 //Initialiesierung der Variablen
 function initvars() {
-  for (i = 1; i <= anzahl; i++) {
+  for (var i = 1; i <= anzahl; i++) {
     Game.Sp.geld[i] = Decimal(0);
     Game.Sp.anzGek[i] = Decimal(0);
     Game.protick[i] = Decimal(0);
     //Game.basPreis[i] = Decimal(Math.pow(1+((i*0.1)-0.2), 66.66) * 100)
     //BASIS PREIS FORMEL
-    Game.basPreis[i] = Decimal(Decimal.pow(Decimal.mul(i,0.2).add(0.6), 166.66).mul(2));
+    if (i<4)
+        Game.basPreis[i] = Decimal(Decimal.pow(Decimal.mul(i,0.2).add(0.6), 140).mul(2));
+    else
+        Game.basPreis[i] = Decimal(Decimal.pow(Decimal.mul(i,0.25).add(1), 150).mul(2));  
     //Game.preiserh[i] = Decimal(1+(1.5*i)^1.8)
     //PREIS ERHÖUNGS FORMEL
     Game.preiserh[i] = Decimal.mul(0.4,i).add(1).pow(1.4);
@@ -78,12 +81,16 @@ function initvars() {
     Game.upgradePreis[i] = [];
     Game.upgradeBasPreis[i] = [];
     Game.upgradePriceErh[i] = [];
-    for (i1 = 0; i1 < upgradeanzahl; i1++) {
+    for (var i1 = 0; i1 < upgradeanzahl; i1++) {
         //Upgrade Effekt Formel
         Game.upgradeEfekt[i1] = Decimal.mul(0.75, Decimal(1.5).pow(i1));
         Game.Sp.upgradeGek[i][i1] = Decimal(0);
         //Upgrade BasPreis Formel
-        Game.upgradeBasPreis[i][i1] = Decimal.pow(Decimal.mul(i, Decimal.add(0.11,Decimal.mul(i1,0.05))).add(1), Decimal(125.12).add((i-1)*10)).mul(100);
+        //Game.upgradeBasPreis[i][i1] = Decimal.pow(Decimal.mul(i, Decimal.add(0.11,Decimal.mul(i1,0.05))).add(1), Decimal(125.12).add((i-1)*10)).mul(100);
+        if (i<3)
+            Game.upgradeBasPreis[i][i1] = Decimal(Decimal.pow(Decimal.mul(i+1+i1*0.6,0.2).add(0.7), 140+10*i1).mul(2));
+        else
+            Game.upgradeBasPreis[i][i1] = Decimal(Decimal.pow(Decimal.mul(i+1+i1*0.6,0.25).add(1.1), 150).mul(2));  
         Game.upgradePreis[i][i1] = Game.upgradeBasPreis[i][i1];
         //Upgrade Preis Erhöungs Formel
         Game.upgradePriceErh[i][i1] = Decimal.mul(0.1, i).add(1.4).pow(2.8+i1);
