@@ -60,7 +60,7 @@ function upgradeKauf(num1, num2) {
 }
 
 function getBuyAmount(was) {
-    if (Game.Sp.geld[was].mul(1.5).lte(Game.maxBuyAmount[was]))
+    if (Game.Sp.geld[was].mul(1.5).sub(Game.Sp.geld[was]).lte(Game.maxBuyAmount[was]))
         return Game.Sp.geld[was].mul(1.5).sub(Game.Sp.geld[was]);
     else
         return Game.maxBuyAmount[was];
