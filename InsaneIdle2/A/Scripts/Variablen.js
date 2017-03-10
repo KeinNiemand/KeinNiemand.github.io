@@ -68,7 +68,7 @@ function initvars() {
     if (i<4)
         Game.basPreis[i] = Decimal(Decimal.pow(Decimal.mul(i,0.2).add(0.6), 140).mul(2));
     else
-        Game.basPreis[i] = Decimal(Decimal.pow(Decimal.mul(i,0.25).add(1), 150).mul(2));  
+        Game.basPreis[i] = Decimal(Decimal.pow(Decimal.mul(i,0.2).add(0.6), 166).mul(2));  
     //Game.preiserh[i] = Decimal(1+(1.5*i)^1.8)
     //PREIS ERHÖUNGS FORMEL
     Game.preiserh[i] = Decimal.mul(0.4,i).add(1).pow(1.4);
@@ -88,9 +88,9 @@ function initvars() {
         //Upgrade BasPreis Formel
         //Game.upgradeBasPreis[i][i1] = Decimal.pow(Decimal.mul(i, Decimal.add(0.11,Decimal.mul(i1,0.05))).add(1), Decimal(125.12).add((i-1)*10)).mul(100);
         if (i<3)
-            Game.upgradeBasPreis[i][i1] = Decimal(Decimal.pow(Decimal.mul(i+1+i1*0.6,0.2).add(0.7), 140+10*i1).mul(2));
+            Game.upgradeBasPreis[i][i1] = Decimal(Decimal.pow(Decimal.mul(i+1+i1*0.6,0.2).add(0.7), 140).mul(2));
         else
-            Game.upgradeBasPreis[i][i1] = Decimal(Decimal.pow(Decimal.mul(i+1+i1*0.6,0.25).add(1.1), 150).mul(2));  
+            Game.upgradeBasPreis[i][i1] = Decimal(Decimal.pow(Decimal.mul(i+1+i1*0.6,0.2).add(0.7), 166).mul(2));  
         Game.upgradePreis[i][i1] = Game.upgradeBasPreis[i][i1];
         //Upgrade Preis Erhöungs Formel
         Game.upgradePriceErh[i][i1] = Decimal.mul(0.1, i).add(1.4).pow(2.8+i1);
