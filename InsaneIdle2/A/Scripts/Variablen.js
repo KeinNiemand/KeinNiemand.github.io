@@ -53,7 +53,9 @@ var Game = {
     upgradePreis: [],
     upgradePriceErh: [],
     upgradeBasPreis: [],
-    maxBuyAmount: [null]
+    maxBuyAmount: [null],
+    baseMaxBuyAmount: Decimal(10000),
+    maxBuyAmountScale: Decimal(5000)
 };
 
 
@@ -65,7 +67,7 @@ function initvars() {
     Game.protick[i] = Decimal(0);
     //Game.basPreis[i] = Decimal(Math.pow(1+((i*0.1)-0.2), 66.66) * 100)
     //BASIS PREIS FORMEL
-    if (i<4)
+    if (i<5)
         Game.basPreis[i] = Decimal(Decimal.pow(Decimal.mul(i,0.2).add(0.6), 140).mul(2));
     else
         Game.basPreis[i] = Decimal(Decimal.pow(Decimal.mul(i,0.2).add(0.6), 166).mul(2));  
@@ -75,7 +77,7 @@ function initvars() {
     Game.preis[i] = Game.basPreis[i];
     Game.basprodumul[i] = Decimal(0.001);
     Game.produmul[i] = Game.basprodumul[i];
-    Game.maxBuyAmount[i] = Decimal(10000).add(Game.protick[i].mul(10000));
+    Game.maxBuyAmount[i] = Decimal(Game.baseMaxBuyAmount).add(Game.protick[i].mul(Game.maxBuyAmountScale));
     //Upgrade Stuff 
     Game.Sp.upgradeGek[i] = [];
     Game.upgradePreis[i] = [];
@@ -83,17 +85,17 @@ function initvars() {
     Game.upgradePriceErh[i] = [];
     for (var i1 = 0; i1 < upgradeanzahl; i1++) {
         //Upgrade Effekt Formel
-        Game.upgradeEfekt[i1] = Decimal.mul(0.75, Decimal(1.5).pow(i1));
+        Game.upgradeEfekt[i1] = Decimal.mul(0.5, Decimal(1.5).pow(i1));
         Game.Sp.upgradeGek[i][i1] = Decimal(0);
         //Upgrade BasPreis Formel
         //Game.upgradeBasPreis[i][i1] = Decimal.pow(Decimal.mul(i, Decimal.add(0.11,Decimal.mul(i1,0.05))).add(1), Decimal(125.12).add((i-1)*10)).mul(100);
-        if (i<3)
+        if (i<4)
             Game.upgradeBasPreis[i][i1] = Decimal(Decimal.pow(Decimal.mul(i+1+i1*0.6,0.2).add(0.7), 140).mul(2));
         else
             Game.upgradeBasPreis[i][i1] = Decimal(Decimal.pow(Decimal.mul(i+1+i1*0.6,0.2).add(0.7), 166).mul(2));  
         Game.upgradePreis[i][i1] = Game.upgradeBasPreis[i][i1];
         //Upgrade Preis Erhöungs Formel
-        Game.upgradePriceErh[i][i1] = Decimal.mul(0.1, i).add(1.4).pow(2.8+i1);
+        Game.upgradePriceErh[i][i1] = Decimal.mul(0.1, i).add(1.4).pow(3.2+i1);
         
     }
    }
