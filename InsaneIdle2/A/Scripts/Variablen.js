@@ -85,7 +85,7 @@ function initvars() {
     Game.upgradePriceErh[i] = [];
     for (var i1 = 0; i1 < upgradeanzahl; i1++) {
         //Upgrade Effekt Formel
-        Game.upgradeEfekt[i1] = Decimal.mul(0.5, Decimal(1.5).pow(i1));
+        Game.upgradeEfekt[i1] = Decimal.mul(0.75, Decimal(1.5).pow(i1));
         Game.Sp.upgradeGek[i][i1] = Decimal(0);
         //Upgrade BasPreis Formel
         //Game.upgradeBasPreis[i][i1] = Decimal.pow(Decimal.mul(i, Decimal.add(0.11,Decimal.mul(i1,0.05))).add(1), Decimal(125.12).add((i-1)*10)).mul(100);
